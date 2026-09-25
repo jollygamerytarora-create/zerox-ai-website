@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export const SITE_URL = "https://jollytech.ai";
+export const SITE_URL = "https://www.jollytech.shop";
 export const SITE_NAME = "JollyTech";
 export const OG_IMAGE = `${SITE_URL}/media/jollytech-og.jpg`;
 

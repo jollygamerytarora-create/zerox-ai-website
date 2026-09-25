@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /pay/
 
-Sitemap: https://jollytech.ai/sitemap.xml
+Sitemap: https://www.jollytech.shop/sitemap.xml
