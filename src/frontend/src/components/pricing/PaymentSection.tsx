@@ -56,7 +56,7 @@ export default function PaymentSection() {
           <div className="flex flex-col items-center gap-4">
             <div className="w-64 h-64 rounded-lg overflow-hidden border-2 border-violet-500/30 bg-white p-2">
               <img
-                src="/assets/upi-qr.jpg"
+                src="/media/upi-qr.jpg"
                 alt="UPI QR Code — divyamarora@fam"
                 className="w-full h-full object-cover"
                 loading="lazy"

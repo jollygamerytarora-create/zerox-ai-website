@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 export const SITE_URL = "https://jollytech.ai";
 export const SITE_NAME = "JollyTech";
-export const OG_IMAGE = `${SITE_URL}/assets/jollytech-og.jpg`;
+export const OG_IMAGE = `${SITE_URL}/media/jollytech-og.jpg`;
 
 export type SeoDefinition = {
   title: string;
