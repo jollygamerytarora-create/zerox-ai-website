@@ -123,7 +123,7 @@ export default function AnimalRank({ score, type }: AnimalRankProps) {
   const label = type === "wpm" ? "WPM" : type === "cpm" ? "CPM" : "CPM";
   return (
     <div
-      className="text-center py-6 px-4 rounded-2xl border border-cyan-500/30 bg-cyan-500/5"
+      className="text-center py-6 px-4 rounded-2xl border border-violet-500/30 bg-violet-500/5"
       style={{ animation: "animalReveal 0.5s cubic-bezier(0.34,1.56,0.64,1)" }}
     >
       <style>
@@ -132,7 +132,7 @@ export default function AnimalRank({ score, type }: AnimalRankProps) {
         }
       </style>
       <div className="text-6xl mb-2">{rank.emoji}</div>
-      <p className="text-xl font-bold font-mono text-cyan-300">
+      <p className="text-xl font-bold font-mono text-fuchsia-300">
         You {verb} like a {rank.name}!
       </p>
       <p className="text-sm text-slate-400 mt-1">{rank.msg}</p>

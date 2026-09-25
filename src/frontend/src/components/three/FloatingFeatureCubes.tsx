@@ -42,8 +42,8 @@ function Cubes() {
           position={pos}
         >
           <meshStandardMaterial
-            color="#00d9ff"
-            emissive="#00d9ff"
+            color="#a855f7"
+            emissive="#a855f7"
             emissiveIntensity={0.3}
             metalness={0.8}
             roughness={0.2}
@@ -52,7 +52,7 @@ function Cubes() {
         </Box>
       ))}
       <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 10]} intensity={1} color="#00ffff" />
+      <pointLight position={[10, 10, 10]} intensity={1} color="#e879f9" />
     </group>
   );
 }

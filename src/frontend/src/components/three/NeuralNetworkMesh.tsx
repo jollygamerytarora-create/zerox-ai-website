@@ -78,11 +78,11 @@ function NeuralMesh() {
   return (
     <>
       <points ref={pointsRef} geometry={pointsGeometry}>
-        <pointsMaterial size={0.1} color="#00ffff" transparent opacity={0.8} />
+        <pointsMaterial size={0.1} color="#e879f9" transparent opacity={0.8} />
       </points>
 
       <lineSegments ref={linesRef} geometry={linesGeometry}>
-        <lineBasicMaterial color="#00ffff" transparent opacity={0.2} />
+        <lineBasicMaterial color="#a855f7" transparent opacity={0.2} />
       </lineSegments>
 
       <ambientLight intensity={0.3} />

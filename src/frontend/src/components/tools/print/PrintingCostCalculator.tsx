@@ -33,7 +33,7 @@ export default function PrintingCostCalculator() {
           min={1}
           value={pages}
           onChange={(e) => setPages(Math.max(1, +e.target.value))}
-          className="w-full px-4 py-2.5 rounded-lg bg-slate-800/60 border border-cyan-500/20 text-slate-200 font-mono text-sm focus:outline-none focus:border-cyan-400/60"
+          className="w-full px-4 py-2.5 rounded-lg bg-slate-800/60 border border-violet-500/20 text-slate-200 font-mono text-sm focus:outline-none focus:border-fuchsia-400/60"
           data-ocid="print_cost.pages.input"
         />
       </div>
@@ -47,8 +47,8 @@ export default function PrintingCostCalculator() {
               onClick={() => setColor(t)}
               className={`flex-1 py-2 rounded-lg font-mono text-xs border transition-all ${
                 color === t
-                  ? "bg-cyan-500/20 border-cyan-400/60 text-cyan-300"
-                  : "bg-slate-800/40 border-slate-700 text-slate-400 hover:border-cyan-500/40"
+                  ? "bg-violet-500/20 border-fuchsia-400/60 text-fuchsia-300"
+                  : "bg-slate-800/40 border-slate-700 text-slate-400 hover:border-violet-500/40"
               }`}
               data-ocid={`print_cost.${t}.toggle`}
             >
@@ -67,8 +67,8 @@ export default function PrintingCostCalculator() {
               onClick={() => setSides(s)}
               className={`flex-1 py-2 rounded-lg font-mono text-xs border transition-all ${
                 sides === s
-                  ? "bg-cyan-500/20 border-cyan-400/60 text-cyan-300"
-                  : "bg-slate-800/40 border-slate-700 text-slate-400 hover:border-cyan-500/40"
+                  ? "bg-violet-500/20 border-fuchsia-400/60 text-fuchsia-300"
+                  : "bg-slate-800/40 border-slate-700 text-slate-400 hover:border-violet-500/40"
               }`}
               data-ocid={`print_cost.${s}.toggle`}
             >
@@ -80,17 +80,17 @@ export default function PrintingCostCalculator() {
       <button
         type="button"
         onClick={calculate}
-        className="w-full py-3 rounded-xl font-mono font-bold text-sm bg-cyan-500/20 border border-cyan-400/50 text-cyan-300 hover:bg-cyan-500/30 hover:shadow-[0_0_20px_rgba(0,217,255,0.2)] transition-all"
+        className="w-full py-3 rounded-xl font-mono font-bold text-sm bg-violet-500/20 border border-fuchsia-400/50 text-fuchsia-300 hover:bg-violet-500/30 hover:shadow-[0_0_20px_rgba(168,85,247,0.2)] transition-all"
         data-ocid="print_cost.submit_button"
       >
         Calculate Cost
       </button>
       {result !== null && (
-        <div className="rounded-xl p-5 bg-cyan-500/5 border border-cyan-500/30 text-center">
+        <div className="rounded-xl p-5 bg-violet-500/5 border border-violet-500/30 text-center">
           <p className="text-xs font-mono text-slate-400 mb-1">
             Estimated Cost
           </p>
-          <p className="text-3xl font-bold font-mono text-cyan-300">
+          <p className="text-3xl font-bold font-mono text-fuchsia-300">
             ₹{result.toFixed(2)}
           </p>
           <p className="text-xs text-slate-500 mt-1 font-mono">

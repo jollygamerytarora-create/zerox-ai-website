@@ -54,7 +54,7 @@ export default function MemoryTyping() {
         <button
           type="button"
           onClick={start}
-          className="px-6 py-3 rounded-xl bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/30 transition-all"
+          className="px-6 py-3 rounded-xl bg-violet-500/20 border border-violet-500/40 text-fuchsia-300 hover:bg-violet-500/30 transition-all"
           data-ocid="typing.memory.primary_button"
         >
           Start Memory Test ▶
@@ -72,11 +72,13 @@ export default function MemoryTyping() {
 
       {phase === "typing" && (
         <div className="space-y-4">
-          <p className="text-xs text-cyan-400">Now type what you remember!</p>
+          <p className="text-xs text-fuchsia-400">
+            Now type what you remember!
+          </p>
           <textarea
             value={typed}
             onChange={(e) => setTyped(e.target.value)}
-            className="w-full rounded-xl bg-slate-900 border border-cyan-500/30 text-slate-200 p-3 text-sm resize-none focus:outline-none focus:border-cyan-400"
+            className="w-full rounded-xl bg-slate-900 border border-violet-500/30 text-slate-200 p-3 text-sm resize-none focus:outline-none focus:border-fuchsia-400"
             rows={3}
             placeholder="Type from memory..."
             autoComplete="off"
@@ -86,7 +88,7 @@ export default function MemoryTyping() {
           <button
             type="button"
             onClick={submit}
-            className="px-6 py-3 rounded-xl bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/30 transition-all"
+            className="px-6 py-3 rounded-xl bg-violet-500/20 border border-violet-500/40 text-fuchsia-300 hover:bg-violet-500/30 transition-all"
             data-ocid="typing.memory.submit_button"
           >
             Submit ✓
@@ -96,8 +98,8 @@ export default function MemoryTyping() {
 
       {phase === "done" && (
         <div className="space-y-4">
-          <div className="text-center py-5 rounded-2xl border border-cyan-500/30 bg-cyan-500/5">
-            <p className="text-5xl font-bold text-cyan-300">{score}%</p>
+          <div className="text-center py-5 rounded-2xl border border-violet-500/30 bg-violet-500/5">
+            <p className="text-5xl font-bold text-fuchsia-300">{score}%</p>
             <p className="text-slate-400 mt-1 text-sm">
               {score >= 80
                 ? "Great memory! 🧠"
@@ -119,7 +121,7 @@ export default function MemoryTyping() {
           <button
             type="button"
             onClick={start}
-            className="w-full py-3 rounded-xl border border-cyan-500/40 bg-cyan-500/10 text-cyan-300 hover:bg-cyan-500/20 transition-all"
+            className="w-full py-3 rounded-xl border border-violet-500/40 bg-violet-500/10 text-fuchsia-300 hover:bg-violet-500/20 transition-all"
             data-ocid="typing.memory.secondary_button"
           >
             Try Again ↺

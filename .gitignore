@@ -2,3 +2,25 @@ node_modules/
 dist/
 *.tsbuildinfo
 .DS_Store
+
+# dependencies & stores
+.pnpm-store/
+.pnpm-debug.log*
+
+# build outputs
+src/frontend/dist/
+src/backend/*.wasm
+
+# local env & secrets (never commit)
+.env
+.env.*
+!.env.example
+
+# editor / OS
+.vscode/
+.idea/
+Thumbs.db
+
+# agent runtime state
+.freebuff/sponsored-runtime/
+.freebuff/project-id

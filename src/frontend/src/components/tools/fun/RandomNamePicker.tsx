@@ -40,7 +40,7 @@ export default function RandomNamePicker() {
           onChange={(e) => setInput(e.target.value)}
           rows={6}
           placeholder={"Alice\nBob\nCharlie\nDiana"}
-          className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-cyan-500/20 text-slate-200 font-mono text-sm focus:outline-none focus:border-cyan-400/60 resize-none"
+          className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-violet-500/20 text-slate-200 font-mono text-sm focus:outline-none focus:border-fuchsia-400/60 resize-none"
           data-ocid="name_picker.textarea"
         />
         <p className="text-xs text-slate-500 font-mono mt-1">
@@ -51,14 +51,14 @@ export default function RandomNamePicker() {
         type="button"
         onClick={pick}
         disabled={names.length < 2}
-        className="w-full py-3 rounded-xl font-mono font-bold text-sm bg-cyan-500/20 border border-cyan-400/50 text-cyan-300 hover:bg-cyan-500/30 hover:shadow-[0_0_20px_rgba(0,217,255,0.2)] transition-all disabled:opacity-40"
+        className="w-full py-3 rounded-xl font-mono font-bold text-sm bg-violet-500/20 border border-fuchsia-400/50 text-fuchsia-300 hover:bg-violet-500/30 hover:shadow-[0_0_20px_rgba(168,85,247,0.2)] transition-all disabled:opacity-40"
         data-ocid="name_picker.submit_button"
       >
         🎲 Pick a Name
       </button>
       {picked && (
         <div
-          className={`rounded-xl p-6 bg-cyan-500/5 border border-cyan-500/30 text-center ${
+          className={`rounded-xl p-6 bg-violet-500/5 border border-violet-500/30 text-center ${
             animating ? "scale-95" : "scale-100"
           }`}
           style={{ transition: "transform 0.1s" }}
@@ -66,7 +66,9 @@ export default function RandomNamePicker() {
           <p className="text-xs font-mono text-slate-400 mb-2">
             {animating ? "Picking..." : "🎉 Selected"}
           </p>
-          <p className="text-3xl font-bold font-mono text-cyan-200">{picked}</p>
+          <p className="text-3xl font-bold font-mono text-fuchsia-200">
+            {picked}
+          </p>
         </div>
       )}
     </div>

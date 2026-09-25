@@ -29,19 +29,19 @@ export default function BinaryConverter() {
         Convert numbers between decimal and binary.
       </p>
       <div className="space-y-3">
-        <span className="text-xs text-cyan-400">Decimal → Binary</span>
+        <span className="text-xs text-fuchsia-400">Decimal → Binary</span>
         <div className="flex gap-2">
           <input
             id="dec-input"
             value={decInput}
             onChange={(e) => setDecInput(e.target.value)}
             placeholder="Enter decimal number"
-            className="flex-1 bg-slate-900 border border-cyan-500/20 rounded-xl px-4 py-2 text-sm text-slate-200 focus:outline-none focus:border-cyan-400/60"
+            className="flex-1 bg-slate-900 border border-violet-500/20 rounded-xl px-4 py-2 text-sm text-slate-200 focus:outline-none focus:border-fuchsia-400/60"
           />
           <button
             type="button"
             onClick={toBinary}
-            className="px-4 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-sm hover:bg-cyan-500/20 transition-all"
+            className="px-4 py-2 rounded-xl bg-violet-500/10 border border-violet-500/30 text-fuchsia-300 text-sm hover:bg-violet-500/20 transition-all"
           >
             Convert
           </button>
@@ -54,7 +54,7 @@ export default function BinaryConverter() {
             <button
               type="button"
               onClick={() => copy(binResult)}
-              className="text-xs text-slate-500 hover:text-cyan-300 px-2"
+              className="text-xs text-slate-500 hover:text-fuchsia-300 px-2"
             >
               Copy
             </button>
@@ -62,19 +62,19 @@ export default function BinaryConverter() {
         )}
       </div>
       <div className="space-y-3">
-        <span className="text-xs text-cyan-400">Binary → Decimal</span>
+        <span className="text-xs text-fuchsia-400">Binary → Decimal</span>
         <div className="flex gap-2">
           <input
             id="bin-input"
             value={binInput}
             onChange={(e) => setBinInput(e.target.value)}
             placeholder="Enter binary (e.g. 1010)"
-            className="flex-1 bg-slate-900 border border-cyan-500/20 rounded-xl px-4 py-2 text-sm text-slate-200 focus:outline-none focus:border-cyan-400/60"
+            className="flex-1 bg-slate-900 border border-violet-500/20 rounded-xl px-4 py-2 text-sm text-slate-200 focus:outline-none focus:border-fuchsia-400/60"
           />
           <button
             type="button"
             onClick={toDecimal}
-            className="px-4 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-sm hover:bg-cyan-500/20 transition-all"
+            className="px-4 py-2 rounded-xl bg-violet-500/10 border border-violet-500/30 text-fuchsia-300 text-sm hover:bg-violet-500/20 transition-all"
           >
             Convert
           </button>
@@ -87,7 +87,7 @@ export default function BinaryConverter() {
             <button
               type="button"
               onClick={() => copy(decResult)}
-              className="text-xs text-slate-500 hover:text-cyan-300 px-2"
+              className="text-xs text-slate-500 hover:text-fuchsia-300 px-2"
             >
               Copy
             </button>

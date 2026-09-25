@@ -1,0 +1,114 @@
+/* ============================================================
+   PetalCursor — translucent pink teardrop petal + sparkle dot
+   ============================================================ */
+/* Petal IS the cursor: hide the native one while the petal is active.
+   Scoped to .petal-cursor-on (only added on fine pointers without
+   reduced-motion), so text inputs still get a visible text caret bar
+   and touch/AT users keep the native cursor. */
+html.petal-cursor-on,
+html.petal-cursor-on body,
+html.petal-cursor-on a,
+html.petal-cursor-on button,
+html.petal-cursor-on [role="button"],
+html.petal-cursor-on label,
+html.petal-cursor-on select {
+  cursor: none;
+}
+
+html.petal-cursor-on input,
+html.petal-cursor-on textarea {
+  cursor: text;
+}
+
+.petal-cursor-layer {
+  position: fixed;
+  inset: 0;
+  /* above EVERYTHING incl. the auth gate (z-10050) and preloader */
+  z-index: 2147483000;
+  pointer-events: none;
+  display: none;
+}
+
+@media (pointer: fine) {
+  .petal-cursor-layer {
+    display: block;
+  }
+}
+
+.petal-cursor {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 26px;
+  height: 26px;
+  will-change: transform;
+  /* teardrop petal: pointed top-left, round bottom-right */
+  border-radius: 62% 62% 62% 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 192, 227, 0.85) 0%,
+    rgba(244, 114, 182, 0.55) 55%,
+    rgba(232, 121, 249, 0.42) 100%
+  );
+  box-shadow:
+    0 0 14px rgba(244, 114, 182, 0.45),
+    inset 0 0 6px rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(2px);
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* soft rim light */
+.petal-cursor__inner {
+  position: absolute;
+  inset: 3px;
+  border-radius: 62% 62% 62% 0;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  opacity: 0.8;
+}
+
+/* hover/bloom state: bigger, softer, rosier */
+.petal-cursor.is-bloom {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 205, 235, 0.92) 0%,
+    rgba(249, 138, 198, 0.62) 55%,
+    rgba(240, 171, 252, 0.5) 100%
+  );
+  box-shadow:
+    0 0 24px rgba(249, 138, 198, 0.65),
+    inset 0 0 8px rgba(255, 255, 255, 0.65);
+}
+
+/* trailing sparkle dot */
+.petal-cursor__spark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: rgba(255, 214, 240, 0.9);
+  box-shadow: 0 0 8px rgba(244, 114, 182, 0.8);
+  will-change: transform;
+}
+
+/* click burst petals */
+.petal-cursor__spark-bit {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 62% 62% 62% 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 192, 227, 0.95),
+    rgba(240, 171, 252, 0.7)
+  );
+  pointer-events: none;
+  z-index: 2147483001;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .petal-cursor-layer {
+    display: none !important;
+  }
+}

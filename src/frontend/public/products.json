@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1",
+    "name": "Zerox AI Lifetime Access",
+    "category": "Software",
+    "price": 599,
+    "description": "Full lifetime access to Zerox AI desktop intelligence system",
+    "stockStatus": "InStock"
+  },
+  {
+    "id": "2",
+    "name": "Zerox AI Student Plan",
+    "category": "Software",
+    "price": 399,
+    "description": "Student lifetime access with verification required",
+    "stockStatus": "InStock"
+  }
+]

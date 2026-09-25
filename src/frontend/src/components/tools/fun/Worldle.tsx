@@ -1926,8 +1926,8 @@ export default function Worldle() {
             onClick={() => startNew(l)}
             className={`px-3 py-1 rounded-lg text-xs border transition-all ${
               wordLength === l && !gameOver
-                ? "bg-cyan-500 border-cyan-500 text-white"
-                : "border-slate-600 text-slate-400 hover:border-cyan-400 hover:text-cyan-300"
+                ? "bg-violet-500 border-violet-500 text-white"
+                : "border-slate-600 text-slate-400 hover:border-fuchsia-400 hover:text-fuchsia-300"
             }`}
           >
             {l}
@@ -1981,7 +1981,7 @@ export default function Worldle() {
           <button
             type="button"
             onClick={() => startNew()}
-            className="mt-2 text-xs px-4 py-1.5 rounded-lg bg-cyan-500 text-white hover:bg-cyan-400 transition-colors"
+            className="mt-2 text-xs px-4 py-1.5 rounded-lg bg-violet-500 text-white hover:bg-fuchsia-400 transition-colors"
           >
             New Word
           </button>

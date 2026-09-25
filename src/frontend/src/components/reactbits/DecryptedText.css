@@ -1,0 +1,15 @@
+.decrypted-text {
+  display: inline-block;
+  white-space: pre-wrap;
+  line-height: 1.08;
+}
+
+.decrypted-text__char {
+  display: inline-block;
+  min-width: 0.08em;
+}
+
+.decrypted-text__char--scrambled {
+  opacity: 0.9;
+  text-shadow: 0 0 14px rgba(168, 85, 247, 0.6);
+}

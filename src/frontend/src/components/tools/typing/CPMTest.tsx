@@ -14,7 +14,7 @@ type Phase = "idle" | "running" | "done";
 
 function CharDisplay({ source, typed }: { source: string; typed: string }) {
   return (
-    <div className="rounded-xl bg-slate-900/70 border border-cyan-500/20 p-4 text-sm leading-relaxed break-words">
+    <div className="rounded-xl bg-slate-900/70 border border-violet-500/20 p-4 text-sm leading-relaxed break-words">
       {source.split("").map((char, i) => {
         let color = "text-slate-500";
         if (i < typed.length)
@@ -114,7 +114,7 @@ export default function CPMTest() {
           <button
             type="button"
             onClick={startTest}
-            className="px-6 py-3 rounded-xl bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/30 transition-all"
+            className="px-6 py-3 rounded-xl bg-violet-500/20 border border-violet-500/40 text-fuchsia-300 hover:bg-violet-500/30 transition-all"
             data-ocid="typing.cpm.primary_button"
           >
             Start CPM Test ▶
@@ -126,7 +126,7 @@ export default function CPMTest() {
           <div className="flex gap-6 text-sm">
             <div>
               <span className="text-slate-500">CPM </span>
-              <span className="text-cyan-400 font-bold">{cpm}</span>
+              <span className="text-fuchsia-400 font-bold">{cpm}</span>
             </div>
             <div>
               <span className="text-slate-500">ACC </span>
@@ -149,7 +149,7 @@ export default function CPMTest() {
               typedRef.current = e.target.value;
               setTyped(e.target.value);
             }}
-            className="w-full rounded-xl bg-slate-900 border border-cyan-500/30 text-slate-200 p-3 text-sm resize-none focus:outline-none focus:border-cyan-400"
+            className="w-full rounded-xl bg-slate-900 border border-violet-500/30 text-slate-200 p-3 text-sm resize-none focus:outline-none focus:border-fuchsia-400"
             rows={2}
             placeholder="Start typing here..."
             autoComplete="off"
@@ -159,7 +159,7 @@ export default function CPMTest() {
           <button
             type="button"
             onClick={handleEnterButton}
-            className="w-full py-3 rounded-xl bg-slate-800/80 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/20 hover:border-cyan-400 transition-all text-sm tracking-widest font-bold"
+            className="w-full py-3 rounded-xl bg-slate-800/80 border border-violet-500/30 text-fuchsia-300 hover:bg-violet-500/20 hover:border-fuchsia-400 transition-all text-sm tracking-widest font-bold"
             data-ocid="typing.cpm.enter_button"
           >
             ↵ ENTER (Next Word)
@@ -172,7 +172,7 @@ export default function CPMTest() {
           <div className="grid grid-cols-3 gap-3 text-sm">
             <div className="rounded-xl bg-slate-900/60 border border-slate-700 p-3">
               <p className="text-slate-500">Final CPM</p>
-              <p className="text-cyan-400 font-bold text-xl">
+              <p className="text-fuchsia-400 font-bold text-xl">
                 {finalStats?.cpm ?? 0}
               </p>
             </div>
@@ -192,7 +192,7 @@ export default function CPMTest() {
           <button
             type="button"
             onClick={startTest}
-            className="w-full py-3 rounded-xl border border-cyan-500/40 bg-cyan-500/10 text-cyan-300 hover:bg-cyan-500/20 transition-all"
+            className="w-full py-3 rounded-xl border border-violet-500/40 bg-violet-500/10 text-fuchsia-300 hover:bg-violet-500/20 transition-all"
             data-ocid="typing.cpm.secondary_button"
           >
             Try Again ↺

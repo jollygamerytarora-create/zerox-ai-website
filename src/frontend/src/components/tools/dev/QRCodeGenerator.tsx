@@ -22,13 +22,13 @@ export default function QRCodeGenerator() {
         onChange={(e) => setText(e.target.value)}
         placeholder="Enter text or URL..."
         rows={3}
-        className="w-full bg-slate-900 border border-cyan-500/20 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-400/60 resize-none"
+        className="w-full bg-slate-900 border border-violet-500/20 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-fuchsia-400/60 resize-none"
       />
       <div className="flex gap-3">
         <button
           type="button"
           onClick={generate}
-          className="px-5 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-sm hover:bg-cyan-500/20 transition-all"
+          className="px-5 py-2 rounded-xl bg-violet-500/10 border border-violet-500/30 text-fuchsia-300 text-sm hover:bg-violet-500/20 transition-all"
         >
           Generate QR
         </button>
@@ -48,12 +48,12 @@ export default function QRCodeGenerator() {
           <img
             src={qrUrl}
             alt="QR Code"
-            className="w-48 h-48 rounded-xl border border-cyan-500/20"
+            className="w-48 h-48 rounded-xl border border-violet-500/20"
           />
           <a
             href={qrUrl}
             download="qrcode.png"
-            className="text-xs text-cyan-400 hover:text-cyan-300 border border-cyan-500/20 px-3 py-1 rounded-full"
+            className="text-xs text-fuchsia-400 hover:text-fuchsia-300 border border-violet-500/20 px-3 py-1 rounded-full"
           >
             Download
           </a>

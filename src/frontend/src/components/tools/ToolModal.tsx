@@ -125,10 +125,10 @@ export default function ToolModal({ tool, onClose }: ToolModalProps) {
         onClick={onClose}
       />
       <div
-        className="relative w-full max-w-2xl max-h-[90vh] flex flex-col rounded-2xl border border-cyan-500/30 bg-slate-950/95 backdrop-blur-xl shadow-[0_0_60px_rgba(0,217,255,0.15)] overflow-hidden"
+        className="relative w-full max-w-2xl max-h-[90vh] flex flex-col rounded-2xl border border-violet-500/30 bg-slate-950/95 backdrop-blur-xl shadow-[0_0_60px_rgba(168,85,247,0.15)] overflow-hidden"
         style={{ animation: "slideUp 0.25s cubic-bezier(0.34,1.56,0.64,1)" }}
       >
-        <div className="flex items-center justify-between px-6 py-4 border-b border-cyan-500/20 flex-shrink-0">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-violet-500/20 flex-shrink-0">
           <div className="flex items-center gap-3">
             <span className="text-2xl">{tool.icon}</span>
             <div>
@@ -141,7 +141,7 @@ export default function ToolModal({ tool, onClose }: ToolModalProps) {
           <button
             type="button"
             onClick={onClose}
-            className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 hover:text-cyan-300 hover:bg-cyan-500/10 border border-transparent hover:border-cyan-500/30 transition-all font-mono"
+            className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 hover:text-fuchsia-300 hover:bg-violet-500/10 border border-transparent hover:border-violet-500/30 transition-all font-mono"
             data-ocid="tools.modal.close_button"
           >
             ✕

@@ -85,8 +85,8 @@ export default function ClicksPerMinute() {
                 }}
                 className={`px-4 py-2 rounded-lg text-sm border font-mono transition-all ${
                   selectedDur === d && !customDur
-                    ? "border-cyan-400 bg-cyan-500/20 text-cyan-300"
-                    : "border-slate-600 bg-slate-800/50 text-slate-400 hover:border-cyan-500/50"
+                    ? "border-fuchsia-400 bg-violet-500/20 text-fuchsia-300"
+                    : "border-slate-600 bg-slate-800/50 text-slate-400 hover:border-violet-500/50"
                 }`}
               >
                 {d}s
@@ -97,7 +97,7 @@ export default function ClicksPerMinute() {
               placeholder="Custom (s)"
               value={customDur}
               onChange={(e) => setCustomDur(e.target.value)}
-              className="w-28 px-3 py-2 rounded-lg text-sm border border-slate-600 bg-slate-800/50 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-400"
+              className="w-28 px-3 py-2 rounded-lg text-sm border border-slate-600 bg-slate-800/50 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-fuchsia-400"
             />
           </div>
         </div>
@@ -109,7 +109,7 @@ export default function ClicksPerMinute() {
             <div className="flex gap-6 text-sm">
               <div>
                 <span className="text-slate-500">Clicks </span>
-                <span className="text-cyan-400 font-bold">{clicks}</span>
+                <span className="text-fuchsia-400 font-bold">{clicks}</span>
               </div>
               <div>
                 <span className="text-slate-500">CPM </span>
@@ -124,7 +124,7 @@ export default function ClicksPerMinute() {
           <button
             type="button"
             onClick={handleClick}
-            className="w-full h-40 rounded-2xl border-2 border-cyan-500/50 bg-cyan-500/10 text-cyan-200 text-2xl font-bold hover:bg-cyan-500/25 hover:border-cyan-400 active:scale-95 transition-all shadow-[0_0_30px_rgba(0,217,255,0.15)]"
+            className="w-full h-40 rounded-2xl border-2 border-violet-500/50 bg-violet-500/10 text-fuchsia-200 text-2xl font-bold hover:bg-violet-500/25 hover:border-fuchsia-400 active:scale-95 transition-all shadow-[0_0_30px_rgba(168,85,247,0.15)]"
             data-ocid="typing.cpm_click.primary_button"
           >
             {phase === "idle" ? "Click Here to Start!" : `CLICK! (${clicks})`}
@@ -138,7 +138,7 @@ export default function ClicksPerMinute() {
           <div className="grid grid-cols-2 gap-3 text-sm">
             <div className="rounded-xl bg-slate-900/60 border border-slate-700 p-3">
               <p className="text-slate-500">Total Clicks</p>
-              <p className="text-cyan-400 font-bold text-xl">
+              <p className="text-fuchsia-400 font-bold text-xl">
                 {finalStats?.clicks ?? 0}
               </p>
             </div>
@@ -152,7 +152,7 @@ export default function ClicksPerMinute() {
           <button
             type="button"
             onClick={reset}
-            className="w-full py-3 rounded-xl border border-cyan-500/40 bg-cyan-500/10 text-cyan-300 hover:bg-cyan-500/20 transition-all"
+            className="w-full py-3 rounded-xl border border-violet-500/40 bg-violet-500/10 text-fuchsia-300 hover:bg-violet-500/20 transition-all"
             data-ocid="typing.cpm_click.secondary_button"
           >
             Try Again ↺

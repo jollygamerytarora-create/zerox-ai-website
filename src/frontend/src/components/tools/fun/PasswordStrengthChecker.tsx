@@ -21,7 +21,7 @@ export default function PasswordStrengthChecker() {
         placeholder="Enter a password to check..."
         value={pw}
         onChange={(e) => setPw(e.target.value)}
-        className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-cyan-500/20 text-slate-200 font-mono text-sm focus:outline-none focus:border-cyan-400/60"
+        className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-violet-500/20 text-slate-200 font-mono text-sm focus:outline-none focus:border-fuchsia-400/60"
         data-ocid="pw_strength.input"
       />
       {pw && (

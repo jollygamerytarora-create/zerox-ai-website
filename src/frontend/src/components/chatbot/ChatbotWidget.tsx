@@ -4,7 +4,6 @@ import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { MessageCircle, Send, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { matchIntent } from "./intentMatcher";
 
 interface Message {
   id: string;
@@ -46,8 +45,10 @@ export default function ChatbotWidget() {
     setMessages((prev) => [...prev, userMessage]);
     setInputValue("");
 
-    // Get bot response
-    setTimeout(() => {
+    // Get bot response — the FAQ brain loads on first message,
+    // resolving well within the 500ms human-feel delay
+    setTimeout(async () => {
+      const { matchIntent } = await import("./intentMatcher");
       const response = matchIntent(inputValue);
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
@@ -71,7 +72,7 @@ export default function ChatbotWidget() {
       {!isOpen && (
         <Button
           size="icon"
-          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-14 h-14 sm:w-16 sm:h-16 rounded-full glow-button bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-2xl z-50"
+          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-14 h-14 sm:w-16 sm:h-16 rounded-full glow-button bg-gradient-to-r from-violet-500 to-purple-600 hover:from-fuchsia-400 hover:to-violet-500 shadow-2xl z-50"
           onClick={() => setIsOpen(true)}
         >
           <MessageCircle className="w-7 h-7 sm:w-8 sm:h-8" />
@@ -80,8 +81,8 @@ export default function ChatbotWidget() {
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-[calc(100vw-2rem)] sm:w-96 h-[500px] sm:h-[600px] max-w-[400px] glass-card border-cyan-500/50 shadow-2xl z-50 flex flex-col animate-in slide-in-from-bottom-4">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4 border-b border-cyan-500/30">
+        <Card className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-[calc(100vw-2rem)] sm:w-96 h-[500px] sm:h-[600px] max-w-[400px] glass-card border-violet-500/50 shadow-2xl z-50 flex flex-col animate-in slide-in-from-bottom-4">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4 border-b border-violet-500/30">
             <CardTitle className="text-lg sm:text-xl flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-green-400 animate-pulse" />
               Jolly Tech Assistant
@@ -90,7 +91,7 @@ export default function ChatbotWidget() {
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(false)}
-              className="hover:bg-cyan-500/10"
+              className="hover:bg-violet-500/10"
             >
               <X className="w-5 h-5" />
             </Button>
@@ -107,7 +108,7 @@ export default function ChatbotWidget() {
                     <div
                       className={`max-w-[80%] rounded-lg px-4 py-2 ${
                         message.sender === "user"
-                          ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white"
+                          ? "bg-gradient-to-r from-violet-500 to-purple-600 text-white"
                           : "bg-muted/50 text-foreground"
                       }`}
                     >
@@ -120,7 +121,7 @@ export default function ChatbotWidget() {
               </div>
             </ScrollArea>
 
-            <div className="p-4 border-t border-cyan-500/30">
+            <div className="p-4 border-t border-violet-500/30">
               <div className="flex gap-2">
                 <Input
                   placeholder="Type your message..."
@@ -132,7 +133,7 @@ export default function ChatbotWidget() {
                 <Button
                   size="icon"
                   onClick={handleSendMessage}
-                  className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 flex-shrink-0"
+                  className="bg-gradient-to-r from-violet-500 to-purple-600 hover:from-fuchsia-400 hover:to-violet-500 flex-shrink-0"
                 >
                   <Send className="w-4 h-4" />
                 </Button>

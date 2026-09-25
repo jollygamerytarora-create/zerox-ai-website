@@ -70,7 +70,9 @@ export default function ReactionTime() {
           <span className="text-green-300">CLICK NOW! ⚡</span>
         )}
         {phase === "done" && (
-          <span className="text-cyan-300">{reactionMs}ms — Click to retry</span>
+          <span className="text-fuchsia-300">
+            {reactionMs}ms — Click to retry
+          </span>
         )}
         {phase === "early" && (
           <span className="text-red-400">Too early! Click to try again</span>
@@ -84,7 +86,9 @@ export default function ReactionTime() {
           </div>
           <div className="rounded-xl bg-slate-900/60 border border-slate-700 p-3 flex-1">
             <p className="text-slate-500">Attempts</p>
-            <p className="text-cyan-400 font-bold text-lg">{history.length}</p>
+            <p className="text-fuchsia-400 font-bold text-lg">
+              {history.length}
+            </p>
           </div>
           {history.length > 1 && (
             <div className="rounded-xl bg-slate-900/60 border border-slate-700 p-3 flex-1">

@@ -37,14 +37,14 @@ export default function DiceRoller() {
         max={6}
         value={count}
         onChange={(e) => setCount(+e.target.value)}
-        className="w-full accent-cyan-400"
+        className="w-full accent-fuchsia-400"
         data-ocid="dice_roller.count.input"
       />
       <button
         type="button"
         onClick={roll}
         disabled={rolling}
-        className="w-full py-3 rounded-xl font-mono font-bold text-sm bg-cyan-500/20 border border-cyan-400/50 text-cyan-300 hover:bg-cyan-500/30 hover:shadow-[0_0_20px_rgba(0,217,255,0.2)] transition-all disabled:opacity-50"
+        className="w-full py-3 rounded-xl font-mono font-bold text-sm bg-violet-500/20 border border-fuchsia-400/50 text-fuchsia-300 hover:bg-violet-500/30 hover:shadow-[0_0_20px_rgba(168,85,247,0.2)] transition-all disabled:opacity-50"
         data-ocid="dice_roller.submit_button"
       >
         {rolling ? "Rolling..." : "🎲 Roll Dice"}
@@ -63,8 +63,8 @@ export default function DiceRoller() {
             ))}
           </div>
           {count > 1 && (
-            <p className="text-center font-mono text-lg text-cyan-200">
-              Total: <span className="font-bold text-cyan-300">{total}</span>
+            <p className="text-center font-mono text-lg text-fuchsia-200">
+              Total: <span className="font-bold text-fuchsia-300">{total}</span>
             </p>
           )}
         </div>

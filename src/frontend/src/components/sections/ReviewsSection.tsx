@@ -1,3 +1,6 @@
+import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
+import SectionHeading from "@/components/motion/SectionHeading";
+import TiltCard from "@/components/motion/TiltCard";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const reviews = [
@@ -19,7 +22,7 @@ const reviews = [
     review:
       "Bohot hi achha AI hai, accurate results deta hai aur easily system ke tasks automate kar deta hai. Worth buying!",
     avatar: "G",
-    color: "from-cyan-500 to-blue-500",
+    color: "from-violet-500 to-violet-500",
   },
   {
     name: "Its_van",
@@ -39,7 +42,7 @@ const reviews = [
     review:
       "Zerox AI changed the way I work on my PC. The voice commands are accurate and the automation saves me hours every week.",
     avatar: "U",
-    color: "from-green-500 to-teal-400",
+    color: "from-fuchsia-500 to-pink-400",
   },
   {
     name: "Verified Customer",
@@ -49,17 +52,11 @@ const reviews = [
     review:
       "The free tools on JollyTech are incredibly useful — I use the typing test and word counter daily. Love this platform!",
     avatar: "J",
-    color: "from-blue-500 to-indigo-500",
+    color: "from-violet-500 to-fuchsia-500",
   },
 ];
 
-function StarRating({
-  rating,
-  max,
-}: {
-  rating: number;
-  max: number;
-}) {
+function StarRating({ rating, max }: { rating: number; max: number }) {
   const displayMax = Math.min(max, 5);
   const displayRating = Math.round((rating / max) * displayMax);
   const stars = ["★", "★", "★", "★", "★"].slice(0, displayMax);
@@ -69,13 +66,13 @@ function StarRating({
         <span
           // biome-ignore lint/suspicious/noArrayIndexKey: static star list
           key={i}
-          className={i < displayRating ? "text-yellow-400" : "text-slate-600"}
+          className={i < displayRating ? "text-amber-400" : "text-slate-600"}
           style={{ fontSize: "14px" }}
         >
           {star}
         </span>
       ))}
-      <span className="text-xs text-slate-400 ml-1 font-mono">
+      <span className="zx-mono ml-1 text-xs text-slate-400">
         {rating}/{max}
       </span>
     </div>
@@ -106,124 +103,101 @@ export default function ReviewsSection() {
   };
 
   return (
-    <section className="relative z-10 py-20 w-full">
-      <div className="container mx-auto px-4 max-w-5xl">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-yellow-400/30 bg-yellow-400/5 text-xs font-mono text-yellow-300 mb-4">
-            <span className="text-yellow-400">★</span>
-            100+ HAPPY CUSTOMERS
-          </div>
-          <h2
-            className="text-3xl sm:text-4xl font-bold font-mono mb-3"
-            style={{
-              background:
-                "linear-gradient(135deg, #fff 0%, #00d9ff 50%, #a78bfa 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            What Our Users Say
-          </h2>
-          <p className="text-slate-400 text-sm font-mono">
-            Real feedback from real customers — unfiltered.
-          </p>
-        </div>
+    <section className="relative z-10 w-full py-24 sm:py-32">
+      <div className="container mx-auto max-w-6xl px-4">
+        <SectionHeading
+          index="01"
+          eyebrow="FIELD NOTES"
+          title="What Our Users Say"
+          lead="Real feedback from real customers — unfiltered."
+        />
 
         {/* Slider */}
-        <div className="relative overflow-hidden">
-          <div
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${active * 100}%)` }}
-          >
-            {reviews.map((r) => (
-              <div key={r.handle} className="min-w-full px-2 sm:px-8">
-                <div
-                  className="relative rounded-2xl border border-cyan-500/20 bg-slate-900/60 backdrop-blur-xl p-8 mx-auto max-w-2xl"
-                  style={{
-                    boxShadow:
-                      "0 0 40px rgba(0,217,255,0.06), inset 0 1px 0 rgba(255,255,255,0.05)",
-                  }}
-                >
-                  {/* Quote mark */}
-                  <div
-                    className="absolute top-4 right-6 text-6xl font-serif leading-none opacity-10 text-cyan-400"
-                    style={{ fontFamily: "Georgia, serif" }}
-                  >
-                    "
-                  </div>
+        <RevealGroup>
+          <div className="relative">
+            <div
+              className="flex transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]"
+              style={{ transform: `translateX(-${active * 100}%)` }}
+            >
+              {reviews.map((r) => (
+                <div key={r.handle} className="min-w-full px-2 sm:px-10">
+                  <RevealItem kind="scale">
+                    <TiltCard max={3}>
+                      <div className="zx-card zx-card-lit zx-edge-top relative mx-auto max-w-2xl p-8 sm:p-10">
+                        {/* oversized editorial quote */}
+                        <div
+                          className="pointer-events-none absolute -top-5 right-6 select-none font-serif text-[7rem] leading-none text-fuchsia-300/10"
+                          style={{ fontFamily: "Georgia, serif" }}
+                          aria-hidden="true"
+                        >
+                          "
+                        </div>
 
-                  <div className="flex items-center gap-4 mb-5">
-                    <div
-                      className={`w-12 h-12 rounded-full bg-gradient-to-br ${r.color} flex items-center justify-center text-white font-bold text-lg flex-shrink-0`}
-                    >
-                      {r.avatar}
-                    </div>
-                    <div>
-                      <p className="font-semibold text-slate-100 font-mono">
-                        {r.name}
-                      </p>
-                      <p className="text-xs text-slate-500 font-mono">
-                        {r.handle}
-                      </p>
-                    </div>
-                    <div className="ml-auto">
-                      <StarRating rating={r.rating} max={r.maxRating} />
-                    </div>
-                  </div>
+                        <div className="mb-6 flex items-center gap-4">
+                          <div
+                            className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${r.color} font-display text-lg font-bold text-white`}
+                          >
+                            {r.avatar}
+                          </div>
+                          <div>
+                            <p className="zx-mono font-semibold text-mist">
+                              {r.name}
+                            </p>
+                            <p className="zx-mono text-xs text-slate-500">
+                              {r.handle}
+                            </p>
+                          </div>
+                          <div className="ml-auto">
+                            <StarRating rating={r.rating} max={r.maxRating} />
+                          </div>
+                        </div>
 
-                  <p className="text-slate-300 leading-relaxed text-base italic">
-                    &ldquo;{r.review}&rdquo;
-                  </p>
+                        <p className="text-lg leading-relaxed text-mist/85">
+                          &ldquo;{r.review}&rdquo;
+                        </p>
+                      </div>
+                    </TiltCard>
+                  </RevealItem>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        </RevealGroup>
 
         {/* Dots */}
-        <div className="flex justify-center gap-2 mt-8">
+        <div className="mt-10 flex justify-center gap-2">
           {reviews.map((r, i) => (
             <button
               key={r.handle}
               type="button"
               onClick={() => goTo(i)}
-              className={`rounded-full transition-all duration-300 ${
+              className={`h-2.5 rounded-full transition-all duration-500 ${
                 i === active
-                  ? "w-6 h-2.5 bg-cyan-400"
-                  : "w-2.5 h-2.5 bg-slate-600 hover:bg-slate-400"
+                  ? "w-8 bg-fuchsia-400"
+                  : "w-2.5 bg-slate-600 hover:bg-slate-400"
               }`}
               aria-label={`Go to review ${i + 1}`}
             />
           ))}
         </div>
 
-        {/* Customer count badge */}
-        <div className="mt-12 flex flex-wrap justify-center gap-8">
+        {/* Stats rail */}
+        <RevealGroup className="mt-16 flex flex-wrap justify-center gap-12 sm:gap-20">
           {[
-            { value: "100+", label: "Happy Customers" },
+            { value: "1500+", label: "Happy Customers" },
             { value: "4.9★", label: "Average Rating" },
             { value: "24/7", label: "AI Support" },
           ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p
-                className="text-3xl font-black font-mono"
-                style={{
-                  background: "linear-gradient(90deg, #00d9ff, #a855f7)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
+            <RevealItem key={stat.label} className="text-center">
+              <p className="zx-display zx-gradient-text text-4xl font-black">
                 {stat.value}
               </p>
-              <p className="text-xs text-slate-500 font-mono mt-1">
+              <p className="zx-mono mt-2 text-xs tracking-wider text-slate-500">
                 {stat.label}
               </p>
-            </div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   );

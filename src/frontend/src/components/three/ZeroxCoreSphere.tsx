@@ -75,8 +75,8 @@ function CoreSphere() {
       {/* Core Sphere */}
       <Sphere ref={sphereRef} args={[1, 64, 64]}>
         <meshStandardMaterial
-          color="#00d9ff"
-          emissive="#00d9ff"
+          color="#a855f7"
+          emissive="#a855f7"
           emissiveIntensity={0.5}
           metalness={0.8}
           roughness={0.2}
@@ -86,8 +86,8 @@ function CoreSphere() {
       {/* Orbiting Rings */}
       <Ring ref={ring1Ref} args={[1.5, 1.6, 64]}>
         <meshStandardMaterial
-          color="#00ffff"
-          emissive="#00ffff"
+          color="#e879f9"
+          emissive="#e879f9"
           emissiveIntensity={0.8}
           transparent
           opacity={0.6}
@@ -116,7 +116,7 @@ function CoreSphere() {
 
       {/* Lighting */}
       <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 10]} intensity={1} color="#00ffff" />
+      <pointLight position={[10, 10, 10]} intensity={1} color="#e879f9" />
       <pointLight position={[-10, -10, -10]} intensity={0.5} color="#ff00ff" />
     </group>
   );

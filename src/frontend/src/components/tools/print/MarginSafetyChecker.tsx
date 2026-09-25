@@ -34,14 +34,14 @@ export default function MarginSafetyChecker() {
           max={40}
           value={margin}
           onChange={(e) => setMargin(+e.target.value)}
-          className="w-full accent-cyan-400"
+          className="w-full accent-fuchsia-400"
           data-ocid="margin_checker.margin.input"
         />
       </div>
       <button
         type="button"
         onClick={() => fileRef.current?.click()}
-        className="w-full py-3 rounded-xl font-mono text-sm border border-dashed border-cyan-500/40 text-slate-400 hover:border-cyan-400/70 hover:text-cyan-300 transition-all"
+        className="w-full py-3 rounded-xl font-mono text-sm border border-dashed border-violet-500/40 text-slate-400 hover:border-fuchsia-400/70 hover:text-fuchsia-300 transition-all"
         data-ocid="margin_checker.upload_button"
       >
         📁 Upload Image
@@ -54,7 +54,7 @@ export default function MarginSafetyChecker() {
         onChange={handleFile}
       />
       {imgSrc && (
-        <div className="relative rounded-xl overflow-hidden border border-cyan-500/20">
+        <div className="relative rounded-xl overflow-hidden border border-violet-500/20">
           <img
             src={imgSrc}
             alt="preview"

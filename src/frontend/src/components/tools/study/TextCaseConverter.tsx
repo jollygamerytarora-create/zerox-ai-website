@@ -57,7 +57,7 @@ export default function TextCaseConverter() {
         Type or paste text, then choose a conversion.
       </p>
       <textarea
-        className="w-full h-32 bg-slate-900/60 border border-cyan-500/20 rounded-xl p-4 text-sm text-slate-200 placeholder-slate-600 font-mono resize-none focus:outline-none focus:border-cyan-400/60 transition-all"
+        className="w-full h-32 bg-slate-900/60 border border-violet-500/20 rounded-xl p-4 text-sm text-slate-200 placeholder-slate-600 font-mono resize-none focus:outline-none focus:border-fuchsia-400/60 transition-all"
         placeholder="Enter your text here..."
         value={input}
         onChange={(e) => setInput(e.target.value)}
@@ -72,8 +72,8 @@ export default function TextCaseConverter() {
             onClick={() => convert(btn.id)}
             className={`px-4 py-2.5 rounded-xl text-sm font-mono border transition-all duration-200 ${
               activeCase === btn.id
-                ? "bg-cyan-500/20 border-cyan-400/60 text-cyan-300 shadow-[0_0_15px_rgba(0,217,255,0.2)]"
-                : "bg-slate-900/60 border-cyan-500/20 text-slate-300 hover:border-cyan-400/40 hover:bg-cyan-500/10"
+                ? "bg-violet-500/20 border-fuchsia-400/60 text-fuchsia-300 shadow-[0_0_15px_rgba(168,85,247,0.2)]"
+                : "bg-slate-900/60 border-violet-500/20 text-slate-300 hover:border-fuchsia-400/40 hover:bg-violet-500/10"
             }`}
             data-ocid={`textcase.${btn.id}.button`}
           >
@@ -84,7 +84,7 @@ export default function TextCaseConverter() {
 
       {output && (
         <div className="relative">
-          <div className="bg-slate-900/60 border border-cyan-500/20 rounded-xl p-4">
+          <div className="bg-slate-900/60 border border-violet-500/20 rounded-xl p-4">
             <p className="text-sm text-slate-200 font-mono whitespace-pre-wrap break-words">
               {output}
             </p>
@@ -92,7 +92,7 @@ export default function TextCaseConverter() {
           <button
             type="button"
             onClick={copy}
-            className="absolute top-3 right-3 text-xs font-mono px-3 py-1.5 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20 transition-all"
+            className="absolute top-3 right-3 text-xs font-mono px-3 py-1.5 rounded-lg bg-violet-500/10 border border-violet-500/30 text-fuchsia-400 hover:bg-violet-500/20 transition-all"
             data-ocid="textcase.copy.button"
           >
             {copied ? "✓ Copied" : "Copy"}

@@ -3,10 +3,50 @@
         <meta charset='UTF-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes' />
         <title>JollyTech — Zerox AI | Smart Desktop AI Assistant</title>
-        <meta name='description' content='JollyTech Zerox AI is a powerful voice-controlled AI desktop assistant for automation, vision, and natural conversation. Trusted by 100+ happy customers.' />
+        <meta name='theme-color' content='#08050f' />
+
+        <!-- Enforce HTTPS -->
+        <meta http-equiv='Content-Security-Policy' content='upgrade-insecure-requests' />
+
+        <!-- Fonts: Syne (display) + Instrument Serif italic (editorial accent) + Inter (body) + JetBrains Mono (data). Preload display font for LCP. -->
+        <link rel='preconnect' href='https://fonts.googleapis.com' />
+        <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+        <link
+            rel='preload'
+            as='style'
+            href='https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap'
+        />
+        <link
+            rel='stylesheet'
+            href='https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap'
+        />
+        <link rel='sitemap' type='application/xml' href='/sitemap.xml' />
+        <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+
+        <!-- Cinematic preloader boot (shown until React mounts the real preloader) -->
+        <style>
+            html { background: #08050f; }
+            #boot { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; background: #08050f; transition: opacity 0.5s ease, visibility 0.5s ease; }
+            #boot.done { opacity: 0; visibility: hidden; pointer-events: none; }
+            #boot .z-mark {
+                font-family: 'Syne', system-ui, sans-serif;
+                font-weight: 800; font-size: 42px; letter-spacing: 0.3em; color: #e879f9;
+                animation: boot-pulse 1.6s ease-in-out infinite;
+            }
+            #boot .z-bar { position: absolute; bottom: 32%; left: 50%; transform: translateX(-50%); width: 120px; height: 1px; background: rgba(232,121,249,0.15); overflow: hidden; }
+            #boot .z-bar::after { content: ''; position: absolute; inset: 0; width: 40%; background: #e879f9; animation: boot-sweep 1.4s ease-in-out infinite; }
+            @keyframes boot-pulse { 0%,100% { opacity: 0.45; } 50% { opacity: 1; } }
+            @keyframes boot-sweep { 0% { transform: translateX(-100%);} 100% { transform: translateX(350%);} }
+            @media (prefers-reduced-motion: reduce) {
+                #boot .z-mark, #boot .z-bar::after { animation: none; }
+            }
+        </style>
+        <meta name='description' content='JollyTech Zerox AI is a powerful voice-controlled AI desktop assistant for automation, vision, and natural conversation. Trusted by 1500+ happy customers.' />
         <meta name='keywords' content='Zerox AI, JollyTech, AI assistant, desktop AI, voice control, automation, artificial intelligence, free online tools' />
         <meta name='author' content='JollyTech' />
         <meta name='robots' content='index, follow' />
+        <!-- Google Search Console verification: replace VALUE with your token from search.google.com/search-console -->
+        <meta name='google-site-verification' content='REPLACE_WITH_YOUR_TOKEN' />
         <link rel='canonical' href='https://jollytech.ai' />
 
         <!-- Open Graph / Facebook -->
@@ -14,7 +54,10 @@
         <meta property='og:url' content='https://jollytech.ai' />
         <meta property='og:title' content='JollyTech — Zerox AI | Smart Desktop AI Assistant' />
         <meta property='og:description' content='Experience the future of desktop intelligence. Zerox AI transforms how you interact with your computer through advanced automation, vision, and natural conversation.' />
-        <meta property='og:image' content='https://jollytech.ai/assets/uploads/screenshot_2026-03-28-14-23-46-70_96b26121e545231a3c569311a54cda96-019d3405-249b-72dd-917f-b339377aed5c-1.jpg' />
+        <meta property='og:image' content='https://jollytech.ai/assets/jollytech-og.jpg' />
+        <meta property='og:image:width' content='750' />
+        <meta property='og:image:height' content='750' />
+        <meta property='og:image:alt' content='JollyTech — Zerox AI' />
         <meta property='og:site_name' content='JollyTech' />
 
         <!-- Twitter Card -->
@@ -22,7 +65,7 @@
         <meta name='twitter:url' content='https://jollytech.ai' />
         <meta name='twitter:title' content='JollyTech — Zerox AI | Smart Desktop AI Assistant' />
         <meta name='twitter:description' content='Zerox AI is a powerful, voice-controlled AI system that transforms how you interact with your computer.' />
-        <meta name='twitter:image' content='https://jollytech.ai/assets/uploads/screenshot_2026-03-28-14-23-46-70_96b26121e545231a3c569311a54cda96-019d3405-249b-72dd-917f-b339377aed5c-1.jpg' />
+        <meta name='twitter:image' content='https://jollytech.ai/assets/jollytech-og.jpg' />
 
         <!-- Schema.org Structured Data -->
         <script type='application/ld+json'>
@@ -34,13 +77,13 @@
           "applicationCategory": "UtilitiesApplication",
           "offers": {
             "@type": "Offer",
-            "price": "9",
+            "price": "59",
             "priceCurrency": "INR"
           },
           "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.9",
-            "reviewCount": "100"
+            "reviewCount": "1500"
           },
           "brand": {
             "@type": "Brand",
@@ -51,6 +94,25 @@
     </head>
     <body>
         <div id='root'></div>
+        <div id='boot' aria-hidden='true'>
+            <span class='z-mark'>Z</span>
+            <span class='z-bar'></span>
+        </div>
+        <script>
+            (function () {
+                try {
+                    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                        var b = document.getElementById('boot');
+                        if (b) { b.classList.add('done'); }
+                    }
+                } catch (e) { /* noop */ }
+                // Fail-safe: never let a crash leave the site stuck on the boot splash.
+                setTimeout(function () {
+                    var b = document.getElementById('boot');
+                    if (b) { b.classList.add('done'); setTimeout(function () { b.remove(); }, 600); }
+                }, 5000);
+            })();
+        </script>
         <script type='module' src='/src/main.tsx'></script>
     </body>
 </html>

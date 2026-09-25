@@ -43,7 +43,7 @@ export default function PaymentSection() {
 
   return (
     <div id="payment-section" className="max-w-3xl mx-auto">
-      <Card className="glass-card border-cyan-500/30">
+      <Card className="glass-card border-violet-500/30">
         <CardHeader className="text-center">
           <CardTitle className="text-3xl">Complete Your Payment</CardTitle>
           <CardDescription className="text-base">
@@ -54,11 +54,12 @@ export default function PaymentSection() {
         <CardContent className="space-y-8">
           {/* UPI QR Code */}
           <div className="flex flex-col items-center gap-4">
-            <div className="w-64 h-64 rounded-lg overflow-hidden border-2 border-cyan-500/30 bg-white p-2">
+            <div className="w-64 h-64 rounded-lg overflow-hidden border-2 border-violet-500/30 bg-white p-2">
               <img
-                src="/assets/Screenshot_2026-02-15-09-53-36-69_ba41e9a642e6e0e2b03656bfbbffd6e4.jpg"
-                alt="UPI QR Code"
-                className="w-full h-full object-contain"
+                src="/assets/upi-qr.jpg"
+                alt="UPI QR Code — divyamarora@fam"
+                className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <p className="text-sm text-muted-foreground">
@@ -82,7 +83,7 @@ export default function PaymentSection() {
                 variant="outline"
                 size="icon"
                 onClick={handleCopyUPI}
-                className="flex-shrink-0 border-cyan-500/50 hover:bg-cyan-500/10"
+                className="flex-shrink-0 border-violet-500/50 hover:bg-violet-500/10"
               >
                 {copied ? (
                   <Check className="w-4 h-4 text-green-400" />

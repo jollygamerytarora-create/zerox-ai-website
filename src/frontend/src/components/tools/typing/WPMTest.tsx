@@ -26,7 +26,7 @@ function WordDisplay({
   return (
     <div
       ref={containerRef}
-      className="w-full overflow-x-auto whitespace-nowrap rounded-xl bg-slate-900/70 border border-cyan-500/20 p-4 text-lg leading-relaxed"
+      className="w-full overflow-x-auto whitespace-nowrap rounded-xl bg-slate-900/70 border border-violet-500/20 p-4 text-lg leading-relaxed"
       style={{ scrollbarWidth: "none" }}
     >
       {words.map((word, wi) => {
@@ -38,7 +38,7 @@ function WordDisplay({
           <span
             key={wordKey}
             data-word={wi}
-            className={`inline-block mr-2 px-0.5 rounded ${isCurrentWord ? "border-b-2 border-cyan-400" : ""}`}
+            className={`inline-block mr-2 px-0.5 rounded ${isCurrentWord ? "border-b-2 border-fuchsia-400" : ""}`}
           >
             {word.split("").map((char, ci) => {
               let color = "text-slate-500";
@@ -180,8 +180,8 @@ export default function WPMTest() {
                 }}
                 className={`px-4 py-2 rounded-lg text-sm border font-mono transition-all ${
                   duration === d && !customDur
-                    ? "border-cyan-400 bg-cyan-500/20 text-cyan-300"
-                    : "border-slate-600 bg-slate-800/50 text-slate-400 hover:border-cyan-500/50"
+                    ? "border-fuchsia-400 bg-violet-500/20 text-fuchsia-300"
+                    : "border-slate-600 bg-slate-800/50 text-slate-400 hover:border-violet-500/50"
                 }`}
               >
                 {d}s
@@ -192,13 +192,13 @@ export default function WPMTest() {
               placeholder="Custom (s)"
               value={customDur}
               onChange={(e) => setCustomDur(e.target.value)}
-              className="w-28 px-3 py-2 rounded-lg text-sm border border-slate-600 bg-slate-800/50 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-400"
+              className="w-28 px-3 py-2 rounded-lg text-sm border border-slate-600 bg-slate-800/50 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-fuchsia-400"
             />
           </div>
           <button
             type="button"
             onClick={startTest}
-            className="px-6 py-3 rounded-xl bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/30 transition-all"
+            className="px-6 py-3 rounded-xl bg-violet-500/20 border border-violet-500/40 text-fuchsia-300 hover:bg-violet-500/30 transition-all"
             data-ocid="typing.wpm.primary_button"
           >
             Start Test ▶
@@ -211,7 +211,7 @@ export default function WPMTest() {
           <div className="flex gap-6 text-sm">
             <div>
               <span className="text-slate-500">WPM </span>
-              <span className="text-cyan-400 font-bold">{wpm}</span>
+              <span className="text-fuchsia-400 font-bold">{wpm}</span>
             </div>
             <div>
               <span className="text-slate-500">ACC </span>
@@ -231,7 +231,7 @@ export default function WPMTest() {
             ref={inputRef}
             value={typed}
             onChange={handleInput}
-            className="w-full rounded-xl bg-slate-900 border border-cyan-500/30 text-slate-200 p-3 text-sm resize-none focus:outline-none focus:border-cyan-400"
+            className="w-full rounded-xl bg-slate-900 border border-violet-500/30 text-slate-200 p-3 text-sm resize-none focus:outline-none focus:border-fuchsia-400"
             rows={2}
             placeholder="Start typing here..."
             autoComplete="off"
@@ -241,7 +241,7 @@ export default function WPMTest() {
           <button
             type="button"
             onClick={handleEnterButton}
-            className="w-full py-3 rounded-xl bg-slate-800/80 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/20 hover:border-cyan-400 transition-all text-sm tracking-widest font-bold"
+            className="w-full py-3 rounded-xl bg-slate-800/80 border border-violet-500/30 text-fuchsia-300 hover:bg-violet-500/20 hover:border-fuchsia-400 transition-all text-sm tracking-widest font-bold"
             data-ocid="typing.wpm.enter_button"
           >
             ↵ ENTER (Next Word)
@@ -255,7 +255,7 @@ export default function WPMTest() {
           <div className="grid grid-cols-3 gap-3 text-sm">
             <div className="rounded-xl bg-slate-900/60 border border-slate-700 p-3">
               <p className="text-slate-500">Final WPM</p>
-              <p className="text-cyan-400 font-bold text-xl">
+              <p className="text-fuchsia-400 font-bold text-xl">
                 {finalStats?.wpm ?? 0}
               </p>
             </div>
@@ -275,7 +275,7 @@ export default function WPMTest() {
           <button
             type="button"
             onClick={startTest}
-            className="w-full py-3 rounded-xl border border-cyan-500/40 bg-cyan-500/10 text-cyan-300 hover:bg-cyan-500/20 transition-all"
+            className="w-full py-3 rounded-xl border border-violet-500/40 bg-violet-500/10 text-fuchsia-300 hover:bg-violet-500/20 transition-all"
             data-ocid="typing.wpm.secondary_button"
           >
             Try Again ↺

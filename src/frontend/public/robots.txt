@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /pay/
+
+Sitemap: https://jollytech.ai/sitemap.xml

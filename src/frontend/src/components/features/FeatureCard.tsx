@@ -1,3 +1,4 @@
+import TiltCard from "@/components/motion/TiltCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { ZeroxFeature } from "@/content/zeroxFeatures";
 
@@ -9,18 +10,22 @@ export default function FeatureCard({ feature }: FeatureCardProps) {
   const Icon = feature.icon;
 
   return (
-    <Card className="glass-card border-cyan-500/30 hover:border-cyan-400/50 transition-all duration-300 hover:scale-105 hover:shadow-glow group">
-      <CardHeader>
-        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-600/20 flex items-center justify-center mb-4 group-hover:from-cyan-500/30 group-hover:to-blue-600/30 transition-all">
-          <Icon className="w-6 h-6 text-cyan-400" />
-        </div>
-        <CardTitle className="text-xl group-hover:text-cyan-400 transition-colors">
-          {feature.title}
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p className="text-muted-foreground">{feature.description}</p>
-      </CardContent>
-    </Card>
+    <TiltCard max={5} className="h-full">
+      <Card className="zx-card zx-card-lit zx-edge-top group h-full">
+        <CardHeader>
+          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-fuchsia-300/20 bg-gradient-to-br from-fuchsia-400/15 to-purple-600/10 transition-all duration-500 group-hover:border-fuchsia-300/40 group-hover:from-fuchsia-400/25 group-hover:to-purple-600/20">
+            <Icon className="h-6 w-6 text-fuchsia-300 transition-transform duration-500 group-hover:scale-110" />
+          </div>
+          <CardTitle className="zx-display text-xl transition-colors duration-300 group-hover:text-fuchsia-200">
+            {feature.title}
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="leading-relaxed text-muted-foreground">
+            {feature.description}
+          </p>
+        </CardContent>
+      </Card>
+    </TiltCard>
   );
 }

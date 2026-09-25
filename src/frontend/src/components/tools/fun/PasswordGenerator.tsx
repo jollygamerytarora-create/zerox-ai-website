@@ -58,7 +58,7 @@ export default function PasswordGenerator() {
           max={64}
           value={length}
           onChange={(e) => setLength(+e.target.value)}
-          className="w-full accent-cyan-400"
+          className="w-full accent-fuchsia-400"
           data-ocid="password_gen.length.input"
         />
       </div>
@@ -74,7 +74,7 @@ export default function PasswordGenerator() {
             onClick={() => opt.set(!opt.val)}
             className={`px-3 py-1.5 rounded-lg font-mono text-xs border transition-all ${
               opt.val
-                ? "bg-cyan-500/20 border-cyan-400/60 text-cyan-300"
+                ? "bg-violet-500/20 border-fuchsia-400/60 text-fuchsia-300"
                 : "bg-slate-800/40 border-slate-700 text-slate-400"
             }`}
             data-ocid={`password_gen.${opt.id}.toggle`}
@@ -86,21 +86,21 @@ export default function PasswordGenerator() {
       <button
         type="button"
         onClick={generate}
-        className="w-full py-3 rounded-xl font-mono font-bold text-sm bg-cyan-500/20 border border-cyan-400/50 text-cyan-300 hover:bg-cyan-500/30 hover:shadow-[0_0_20px_rgba(0,217,255,0.2)] transition-all"
+        className="w-full py-3 rounded-xl font-mono font-bold text-sm bg-violet-500/20 border border-fuchsia-400/50 text-fuchsia-300 hover:bg-violet-500/30 hover:shadow-[0_0_20px_rgba(168,85,247,0.2)] transition-all"
         data-ocid="password_gen.submit_button"
       >
         Generate Password
       </button>
       {password && (
         <div className="space-y-2">
-          <div className="flex items-center gap-2 rounded-xl px-4 py-3 bg-slate-800/60 border border-cyan-500/20">
-            <code className="flex-1 text-sm text-cyan-200 font-mono break-all">
+          <div className="flex items-center gap-2 rounded-xl px-4 py-3 bg-slate-800/60 border border-violet-500/20">
+            <code className="flex-1 text-sm text-fuchsia-200 font-mono break-all">
               {password}
             </code>
             <button
               type="button"
               onClick={copy}
-              className="text-xs font-mono px-3 py-1.5 rounded-lg bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 hover:bg-cyan-500/30 transition-all flex-shrink-0"
+              className="text-xs font-mono px-3 py-1.5 rounded-lg bg-violet-500/20 border border-fuchsia-400/40 text-fuchsia-300 hover:bg-violet-500/30 transition-all flex-shrink-0"
               data-ocid="password_gen.secondary_button"
             >
               {copied ? "Copied!" : "Copy"}

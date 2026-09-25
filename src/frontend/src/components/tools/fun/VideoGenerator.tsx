@@ -323,7 +323,7 @@ export default function VideoGenerator() {
           data-ocid="video_gen.secondary_button"
           onClick={handleDownload}
           disabled={!videoUrl || loading}
-          className="flex-1 py-3 rounded-xl border border-cyan-500/50 bg-cyan-500/10 text-cyan-300 text-sm font-bold hover:bg-cyan-500/20 transition-all active:scale-[0.97] disabled:opacity-30 disabled:cursor-not-allowed"
+          className="flex-1 py-3 rounded-xl border border-violet-500/50 bg-violet-500/10 text-fuchsia-300 text-sm font-bold hover:bg-violet-500/20 transition-all active:scale-[0.97] disabled:opacity-30 disabled:cursor-not-allowed"
         >
           ⬇ Download
         </button>

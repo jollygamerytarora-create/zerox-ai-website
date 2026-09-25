@@ -32,7 +32,7 @@ export default function PageSizeConverter() {
             id="size-from"
             value={from}
             onChange={(e) => setFrom(e.target.value)}
-            className="w-full px-3 py-2.5 rounded-lg bg-slate-800/60 border border-cyan-500/20 text-slate-200 font-mono text-sm focus:outline-none focus:border-cyan-400/60"
+            className="w-full px-3 py-2.5 rounded-lg bg-slate-800/60 border border-violet-500/20 text-slate-200 font-mono text-sm focus:outline-none focus:border-fuchsia-400/60"
             data-ocid="page_size.from.select"
           >
             {Object.keys(sizes).map((s) => (
@@ -53,7 +53,7 @@ export default function PageSizeConverter() {
             id="size-to"
             value={to}
             onChange={(e) => setTo(e.target.value)}
-            className="w-full px-3 py-2.5 rounded-lg bg-slate-800/60 border border-cyan-500/20 text-slate-200 font-mono text-sm focus:outline-none focus:border-cyan-400/60"
+            className="w-full px-3 py-2.5 rounded-lg bg-slate-800/60 border border-violet-500/20 text-slate-200 font-mono text-sm focus:outline-none focus:border-fuchsia-400/60"
             data-ocid="page_size.to.select"
           >
             {Object.keys(sizes).map((s) => (
@@ -71,9 +71,9 @@ export default function PageSizeConverter() {
         ].map(({ label, sz }) => (
           <div
             key={label}
-            className="rounded-xl p-4 bg-cyan-500/5 border border-cyan-500/20"
+            className="rounded-xl p-4 bg-violet-500/5 border border-violet-500/20"
           >
-            <p className="text-lg font-bold font-mono text-cyan-300 mb-1">
+            <p className="text-lg font-bold font-mono text-fuchsia-300 mb-1">
               {label}
             </p>
             <p className="text-sm font-mono text-slate-300">
@@ -87,7 +87,7 @@ export default function PageSizeConverter() {
       </div>
       <div className="rounded-xl p-4 bg-slate-800/40 border border-slate-700/50 font-mono text-sm">
         <p className="text-slate-400 mb-1">Scale factor</p>
-        <p className="text-cyan-300 font-bold">
+        <p className="text-fuchsia-300 font-bold">
           {(t.w / f.w).toFixed(3)} × width · {(t.h / f.h).toFixed(3)} × height
         </p>
       </div>
