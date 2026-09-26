@@ -253,10 +253,11 @@ export function PhoneStep() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 16, x: "-50%" }}
+      animate={{ opacity: 1, y: 0, x: "-50%" }}
+      exit={{ opacity: 0, y: 16, x: "-50%" }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed bottom-6 left-1/2 z-[10040] w-[min(92vw,420px)] -translate-x-1/2"
+      className="fixed bottom-6 left-1/2 z-[10040] w-[min(92vw,420px)]"
     >
       <div
         className="overflow-hidden rounded-3xl p-px"

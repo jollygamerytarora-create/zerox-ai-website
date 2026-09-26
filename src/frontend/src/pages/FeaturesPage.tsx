@@ -3,20 +3,32 @@ import { SEO } from "@/lib/seoPages";
 import FeatureCard from "@/components/features/FeatureCard";
 import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import SplitText from "@/components/motion/SplitText";
-import FloatingFeatureCubes from "@/components/three/FloatingFeatureCubes";
+import { useLowPowerMode } from "@/hooks/useLowPowerMode";
 import { Card } from "@/components/ui/card";
 import { zeroxFeatures } from "@/content/zeroxFeatures";
 import { ExternalLink } from "lucide-react";
 import { motion } from "motion/react";
+import { lazy, Suspense } from "react";
+
+const FloatingFeatureCubes = lazy(
+  () => import("@/components/three/FloatingFeatureCubes"),
+);
 
 export default function FeaturesPage() {
   useSeo(SEO["/features"]);
+  // three.js canvas backdrop is skipped on phones (CPU/GPU cost ≫ value
+  // at 16% opacity) — a static gradient stands in.
+  const isMobile = useLowPowerMode();
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden py-20">
-      {/* 3D Background (legacy, kept) */}
-      <div className="fixed inset-0 z-0 opacity-[0.16]">
-        <FloatingFeatureCubes />
-      </div>
+      {/* 3D Background (desktop only) */}
+      {!isMobile && (
+        <div className="fixed inset-0 z-0 opacity-[0.16]">
+          <Suspense fallback={null}>
+            <FloatingFeatureCubes />
+          </Suspense>
+        </div>
+      )}
 
       {/* Scanning horizontal line animation (legacy, kept) */}
       <div className="pointer-events-none fixed inset-x-0 bottom-0 top-0 z-0 overflow-hidden">

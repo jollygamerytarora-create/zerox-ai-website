@@ -1,3 +1,4 @@
+import { useLowPowerMode } from "@/hooks/useLowPowerMode";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { motion } from "motion/react";
 import { useMemo } from "react";
@@ -31,13 +32,16 @@ export default function SplitText({
   as: Tag = "span",
 }: SplitTextProps) {
   const prefersReducedMotion = useReducedMotion();
+  // Mobile: per-char inline-block spans wreck heading alignment on small
+  // screens and cost GC on low-end devices — render plain text instead.
+  const isMobile = useLowPowerMode();
 
   const parts = useMemo(() => {
     if (by === "word") return text.split(/(\s+)/);
     return Array.from(text);
   }, [text, by]);
 
-  if (prefersReducedMotion) {
+  if (prefersReducedMotion || isMobile) {
     return <Tag className={className}>{text}</Tag>;
   }
 

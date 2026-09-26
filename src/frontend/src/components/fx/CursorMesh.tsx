@@ -28,6 +28,12 @@ export default function CursorMesh({
     const reduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
+    // Mobile: the cursor-compression effect has no meaning on touch —
+    // render a static frame and never start the rAF loop.
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent,
+    );
+    if (isMobile) canvas.style.opacity = "0.45";
 
     const conf =
       theme === "hero"
@@ -186,14 +192,14 @@ export default function CursorMesh({
     };
 
     build();
-    start();
+    if (!isMobile) start();
 
     const ro = new ResizeObserver(build);
     ro.observe(canvas);
     const io = new IntersectionObserver(
       ([entry]) => {
         running = entry.isIntersecting;
-        if (running && !reduced) start();
+        if (running && !reduced && !isMobile) start();
         else stop();
       },
       { threshold: 0 },

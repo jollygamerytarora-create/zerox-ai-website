@@ -812,3 +812,25 @@
     animation: none !important;
   }
 }
+
+/* ============================================================
+   MOBILE PERF — fixed overlay layers cost real frame time on
+   phone GPUs: animated film grain forces full-screen repaints,
+   backdrop-blur on every card stacks up compositor work.
+   Content and styling are untouched — only these cost layers.
+   ============================================================ */
+@media (max-width: 767px), (pointer: coarse) {
+  .zx-grain {
+    display: none;
+  }
+
+  .zx-card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: linear-gradient(
+      180deg,
+      rgba(24, 16, 40, 0.82) 0%,
+      rgba(15, 10, 28, 0.82) 100%
+    );
+  }
+}

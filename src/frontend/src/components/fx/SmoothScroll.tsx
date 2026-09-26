@@ -1,3 +1,4 @@
+import { useLowPowerMode } from "@/hooks/useLowPowerMode";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import Lenis from "lenis";
 import { type ReactNode, useEffect } from "react";
@@ -10,9 +11,12 @@ import { type ReactNode, useEffect } from "react";
  */
 export default function SmoothScroll({ children }: { children: ReactNode }) {
   const prefersReducedMotion = useReducedMotion();
+  // Lenis hijacks touch scrolling on phones and causes jank + rubber-band
+  // fights with the browser — native scroll is the right call on mobile.
+  const isMobile = useLowPowerMode();
 
   useEffect(() => {
-    if (prefersReducedMotion) return;
+    if (prefersReducedMotion || isMobile) return;
 
     const lenis = new Lenis({
       duration: 1.15,
@@ -37,7 +41,7 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
       (window as unknown as { __lenis?: Lenis | undefined }).__lenis =
         undefined;
     };
-  }, [prefersReducedMotion]);
+  }, [prefersReducedMotion, isMobile]);
 
   return <>{children}</>;
 }

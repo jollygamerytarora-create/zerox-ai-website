@@ -184,7 +184,14 @@ export default function TextLoop({
     const prefersReduced =
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReduced || speed <= 0) return undefined;
+    // Mobile: SVG textPath layout-per-frame is brutal on phones — keep
+    // the marquee static and readable instead.
+    const isMobile =
+      typeof window !== "undefined" &&
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent,
+      );
+    if (prefersReduced || isMobile || speed <= 0) return undefined;
 
     const state = { offset: 0 };
     // SVG textPath updates force text layout every frame — applying on

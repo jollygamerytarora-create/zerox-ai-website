@@ -1,3 +1,4 @@
+import { useLowPowerMode } from "@/hooks/useLowPowerMode";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { motion } from "motion/react";
 import type { ReactNode } from "react";
@@ -94,6 +95,10 @@ export default function Reveal({
   margin = "-12% 0px -12% 0px",
 }: RevealProps) {
   const prefersReducedMotion = useReducedMotion();
+  // On phones we render content statically: no opacity-0 gating (text
+  // must never be invisible if an IntersectionObserver fires late), and
+  // no per-section transforms fighting the compositor.
+  const isMobile = useLowPowerMode();
   const ref = useRef<HTMLDivElement>(null);
 
   const variant = VARIANTS[kind];
@@ -101,7 +106,7 @@ export default function Reveal({
   const d = duration ?? preset?.duration ?? 0.8;
   const ease = preset?.ease ?? ([0.22, 1, 0.36, 1] as const);
 
-  if (prefersReducedMotion) {
+  if (prefersReducedMotion || isMobile) {
     return <div className={className}>{children}</div>;
   }
 
@@ -133,9 +138,10 @@ export function RevealGroup({
   delay?: number;
 }) {
   const prefersReducedMotion = useReducedMotion();
+  const isMobile = useLowPowerMode();
   const ref = useRef<HTMLDivElement>(null);
 
-  if (prefersReducedMotion) {
+  if (prefersReducedMotion || isMobile) {
     return <div className={className}>{children}</div>;
   }
 
@@ -169,8 +175,9 @@ export function RevealItem({
   kind?: RevealKind;
 }) {
   const prefersReducedMotion = useReducedMotion();
+  const isMobile = useLowPowerMode();
 
-  if (prefersReducedMotion) {
+  if (prefersReducedMotion || isMobile) {
     return <div className={className}>{children}</div>;
   }
 

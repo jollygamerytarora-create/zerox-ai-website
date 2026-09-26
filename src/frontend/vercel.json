@@ -15,8 +15,16 @@
       ]
     },
     {
+      "source": "/favicon.ico",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }]
+    },
+    {
       "source": "/favicon.svg",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }]
+    },
+    {
+      "source": "/favicon-192.png",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }]
     },
     {
       "source": "/robots.txt",

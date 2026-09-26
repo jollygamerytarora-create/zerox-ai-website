@@ -1,4 +1,5 @@
 import { gsap } from "gsap";
+import { useLowPowerMode } from "@/hooks/useLowPowerMode";
 import {
   type CSSProperties,
   useCallback,
@@ -78,6 +79,8 @@ export default function MaskedHeading({
     [text],
   );
 
+  const isMobile = useLowPowerMode();
+
   const settingsRef = useRef<Record<string, unknown>>({});
   settingsRef.current = {
     fillScale,
@@ -147,6 +150,10 @@ export default function MaskedHeading({
     ro.observe(root);
     if (document.fonts?.ready) document.fonts.ready.then(sync).catch(() => {});
 
+    // Mobile: skip the infinite drift rAF loop entirely — the heading
+    // renders perfectly still (and stays visible) at zero runtime cost.
+    if (isMobile) return;
+
     let raf = 0;
     let last = performance.now();
     let clock = 0;
@@ -194,7 +201,7 @@ export default function MaskedHeading({
       root.removeEventListener("pointermove", onMove);
       root.removeEventListener("pointerleave", onLeave);
     };
-  }, [place, sync]);
+  }, [place, sync, isMobile]);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: re-syncs geometry when the rendered words change
   useEffect(() => {
@@ -233,7 +240,9 @@ export default function MaskedHeading({
     const reduce = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-    if (reveal === "none" || reduce) {
+    // Mobile: settle immediately — glyphs never start hidden, so the
+    // headline is always readable even if observers fire late.
+    if (reveal === "none" || reduce || isMobile) {
       settle();
       return;
     }
@@ -309,7 +318,7 @@ export default function MaskedHeading({
 
     play();
     return () => tweenRef.current?.kill();
-  }, [reveal, trigger, duration, stagger]);
+  }, [reveal, trigger, duration, stagger, isMobile]);
 
   const Tag = tag;
 

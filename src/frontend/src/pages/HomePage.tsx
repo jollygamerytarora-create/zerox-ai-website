@@ -18,8 +18,9 @@ import TextLoop from "@/components/reactbits/TextLoop";
 import GlowCTA from "@/components/ui/GlowCTA";
 import { Button } from "@/components/ui/button";
 import { zeroxFeatures } from "@/content/zeroxFeatures";
+import { useLowPowerMode } from "@/hooks/useLowPowerMode";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { ChevronDown, Zap } from "lucide-react";
 import {
   motion,
@@ -107,12 +108,17 @@ const SLIDE_COUNT = FEATURE_SLIDES.length;
 const PHOTOS = {
   aurora:
     "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=1600&q=80",
+  auroraMobile:
+    "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=800&q=70",
 };
 
 export default function HomePage() {
   useSeo(SEO["/"]);
   const navigate = useNavigate();
   const prefersReducedMotion = useReducedMotion();
+  // Phones/low-power devices get the static build: no Spline runtime,
+  // no WebGL text effects, no per-frame layout — same content, zero jank.
+  const isMobile = useLowPowerMode();
 
   const slidesRef = useRef<HTMLDivElement>(null);
 
@@ -151,10 +157,24 @@ export default function HomePage() {
           }}
         >
           <div className="relative h-[82svh] max-h-[820px] w-full max-w-[900px]">
-            <SplineSceneBase
-              scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-              className="!absolute inset-0 h-full w-full"
-            />
+            {isMobile ? (
+              /* static violet core — the Spline runtime (multi-MB + WebGL
+                 worker) is the single heaviest thing on the page; phones
+                 get this lightweight stand-in instead */
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 m-auto h-[44svh] w-[88vw] max-w-[540px] rounded-full"
+                style={{
+                  background:
+                    "radial-gradient(circle at 50% 42%, rgba(192,132,252,0.30) 0%, rgba(139,68,224,0.13) 38%, rgba(8,5,15,0) 72%)",
+                }}
+              />
+            ) : (
+              <SplineSceneBase
+                scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+                className="!absolute inset-0 h-full w-full"
+              />
+            )}
           </div>
         </motion.div>
 
@@ -290,7 +310,7 @@ export default function HomePage() {
           <MaskedHeading
             text="Designed like a film. Built like a machine."
             tag="h2"
-            src={PHOTOS.aurora}
+            src={isMobile ? PHOTOS.auroraMobile : PHOTOS.aurora}
             reveal="rise"
             trigger="view"
             fillScale={1.35}
@@ -315,10 +335,18 @@ export default function HomePage() {
       {/* ================= SCENE 5 — MASKED VIDEO BREAK ================= */}
       <section className="relative z-10 w-full overflow-x-clip py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-8">
-          <MaskedVideoHeading
-            lines={["SCROLL TO SEE", "FEATURES"]}
-            src="https://videos.pexels.com/video-files/1918465/1918465-sd_960_540_24fps.mp4"
-          />
+          {isMobile ? (
+            <h2 className="zx-display text-[13vw] font-extrabold leading-[0.95] tracking-[-0.02em] sm:hidden">
+              <span className="zx-gradient-text">SCROLL TO SEE</span>
+              <br />
+              <span className="zx-gradient-text">FEATURES</span>
+            </h2>
+          ) : (
+            <MaskedVideoHeading
+              lines={["SCROLL TO SEE", "FEATURES"]}
+              src="https://videos.pexels.com/video-files/1918465/1918465-sd_960_540_24fps.mp4"
+            />
+          )}
           <Reveal kind="fade" className="mt-8 text-center">
             <p className="zx-mono text-[10px] tracking-[0.45em] text-fuchsia-200/50">
               VOICE · AUTOMATION · VISION · GENERATION — SEVEN SCENES BELOW
@@ -474,6 +502,74 @@ export default function HomePage() {
         <PodcastSection />
       </section>
 
+      {/* ================= INTERNAL LINKS — crawlable paths to every page.
+          Real anchors here are the strongest signal Google uses to pick
+          the sitelinks shown beneath the main result. ================= */}
+      <section
+        className="relative z-10 w-full px-4 pb-20 sm:px-8"
+        aria-label="Explore Zerox AI"
+      >
+        <div className="mx-auto max-w-4xl text-center">
+          <div className="zx-eyebrow zx-mono justify-center">
+            04 — Explore
+          </div>
+          <h2 className="zx-display mt-5 text-2xl font-bold sm:text-3xl">
+            <span className="zx-gradient-text">Explore Zerox AI</span>
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-sm text-muted-foreground sm:text-base">
+            Everything JollyTech's personal AI assistant can do — pick where
+            to go next.
+          </p>
+          <nav className="mx-auto mt-8 flex max-w-2xl flex-wrap items-center justify-center gap-3">
+            {[
+              {
+                to: "/features",
+                label: "Zerox AI Features",
+                desc: "All 27 capabilities",
+              },
+              {
+                to: "/pricing",
+                label: "Pricing & Lifetime Plans",
+                desc: "From ₹2599",
+              },
+              {
+                to: "/monthly-pricing",
+                label: "Subscriptions",
+                desc: "Weekly to yearly",
+              },
+              {
+                to: "/demo",
+                label: "Book a Live Demo",
+                desc: "See it run your desktop",
+              },
+              {
+                to: "/tools",
+                label: "Free Online Tools",
+                desc: "QR, AI images & more",
+              },
+              {
+                to: "/contact",
+                label: "Contact JollyTech",
+                desc: "Support & sales",
+              },
+            ].map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                className="zx-card zx-card-lit group rounded-xl px-4 py-3 text-left transition-transform duration-300 hover:-translate-y-0.5"
+              >
+                <span className="zx-display block text-sm font-semibold text-mist group-hover:text-fuchsia-200">
+                  {l.label}
+                </span>
+                <span className="zx-mono block text-[10px] tracking-wide text-muted-foreground">
+                  {l.desc}
+                </span>
+              </Link>
+            ))}
+          </nav>
+        </div>
+      </section>
+
       <section className="relative z-10 pb-28 pt-4 text-center">
         <Reveal kind="blur">
           <p className="zx-mono text-[10px] tracking-[0.5em] text-mist/30">
@@ -499,6 +595,7 @@ function Slide({
   range: [number, number, number];
 }) {
   const [start, mid, end] = range;
+  const isMobile = useLowPowerMode();
   const opacity = useTransform(
     progress,
     [start - 0.05, start + 0.03, mid, end - 0.03, end],
@@ -536,7 +633,15 @@ function Slide({
 
         {/* each feature wears a different typographic machine.
             `active` remounts the effect so it replays on every entry. */}
-        {active && slide.effect === "particle" && (
+        {/* mobile: canvas/WebGL text machines are the jank source inside
+            the sticky stage — render the same words as plain type */}
+        {active && isMobile && (
+          <h3 className="zx-display text-[2rem] font-extrabold leading-[1.05] sm:text-[3.4rem]">
+            <span className="zx-gradient-text">{slide.title}</span>
+          </h3>
+        )}
+
+        {!isMobile && active && slide.effect === "particle" && (
           <div className="mx-auto h-[110px] w-full sm:h-[190px]">
             <ParticleText
               text={slide.title}
@@ -556,7 +661,7 @@ function Slide({
           </div>
         )}
 
-        {active && slide.effect === "flap" && (
+        {!isMobile && active && slide.effect === "flap" && (
           <div className="flex justify-center overflow-x-auto pb-2">
             <SplitFlapText
               words={[slide.title.toUpperCase()]}
@@ -576,7 +681,7 @@ function Slide({
           </div>
         )}
 
-        {active && slide.effect === "warp" && (
+        {!isMobile && active && slide.effect === "warp" && (
           <div className="mx-auto h-[110px] w-full sm:h-[190px]">
             <Suspense fallback={null}>
               <WarpText
@@ -596,7 +701,7 @@ function Slide({
           </div>
         )}
 
-        {active && slide.effect === "stroke" && (
+        {!isMobile && active && slide.effect === "stroke" && (
           <div className="zx-display overflow-x-auto">
             <StrokeText
               text={slide.title}
